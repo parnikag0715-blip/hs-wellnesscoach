@@ -1,0 +1,13 @@
+{
+  "name": "hs-wellness-coach-functions",
+  "private": true,
+  "engines": {
+    "node": "22"
+  },
+  "main": "lib/index.js",
+  "scripts": {
+    "build": "tsc",
+    "build:watch": "tsc --watch",
+    "lint": "eslint src"
+  }
+}
