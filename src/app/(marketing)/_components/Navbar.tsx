@@ -64,7 +64,14 @@ export default function Navbar() {
           }}
         >
           <span style={{ fontSize: '1.5rem' }}>🌿</span>
-          <span style={{ fontWeight: 800, fontSize: 'clamp(1rem, 2.5vw, 1.15rem)', color: '#32381c', letterSpacing: '-0.02em' }}>
+          <span
+            style={{
+              fontWeight: 800,
+              fontSize: 'clamp(1rem, 2.5vw, 1.15rem)',
+              color: '#32381c',
+              letterSpacing: '-0.02em',
+            }}
+          >
             HS Wellness Coach
           </span>
         </Link>
@@ -112,6 +119,7 @@ export default function Navbar() {
               </Link>
             );
           })}
+
           <Link
             href="/book"
             style={{
@@ -228,7 +236,14 @@ export default function Navbar() {
             </div>
 
             {/* Links list */}
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '0.5rem', marginBottom: '1.5rem' }}>
+            <div
+              style={{
+                display: 'flex',
+                flexDirection: 'column',
+                gap: '0.5rem',
+                marginBottom: '1.5rem',
+              }}
+            >
               <Link
                 href="/"
                 onClick={() => setMobileMenuOpen(false)}

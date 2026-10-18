@@ -1,7 +1,5 @@
 {
   "projects": {
-    "default": "REPLACE_WITH_DEV_PROJECT_ID",
-    "staging": "REPLACE_WITH_STAGING_PROJECT_ID",
-    "production": "REPLACE_WITH_PROD_PROJECT_ID"
+    "default": "hs-wellness-coach"
   }
 }

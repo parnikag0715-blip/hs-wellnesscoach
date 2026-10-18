@@ -1,8 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import type { ReactNode } from 'react';
 import './globals.css';
-import AnalyticsInit from '@/components/AnalyticsInit';
-
 
 export const viewport: Viewport = {
   width: 'device-width',
@@ -17,7 +15,8 @@ export const metadata: Metadata = {
     default: 'HS Wellness Coach | Certified Herbalife Nutrition & Weight Management',
     template: '%s | HS Wellness Coach',
   },
-  description: 'Transform your body and health with certified Herbalife wellness coaching. Personalized nutrition plans, sustainable fat loss, active lifestyle habits, and daily 1-on-1 WhatsApp guidance.',
+  description:
+    'Transform your body and health with certified Herbalife wellness coaching. Personalized nutrition plans, sustainable fat loss, active lifestyle habits, and daily 1-on-1 WhatsApp guidance.',
   keywords: [
     'wellness coach',
     'Herbalife coach India',
@@ -46,12 +45,14 @@ export const metadata: Metadata = {
     url: '/',
     siteName: 'HS Wellness Coach',
     title: 'HS Wellness Coach | Certified Herbalife Nutrition & Wellness Coaching',
-    description: 'Transform your health with personalized Herbalife nutrition plans and 1-on-1 expert coaching.',
+    description:
+      'Transform your health with personalized Herbalife nutrition plans and 1-on-1 expert coaching.',
   },
   twitter: {
     card: 'summary_large_image',
     title: 'HS Wellness Coach | Certified Herbalife Nutrition & Coaching',
-    description: 'Transform your health with personalized Herbalife nutrition plans and 1-on-1 expert coaching.',
+    description:
+      'Transform your health with personalized Herbalife nutrition plans and 1-on-1 expert coaching.',
   },
   robots: {
     index: true,
@@ -71,7 +72,8 @@ const structuredData = {
   '@type': 'HealthAndBeautyBusiness',
   name: 'HS Wellness Coach',
   url: 'http://localhost:3000',
-  description: 'Certified Herbalife Wellness Coach offering customized weight management programs, nutrition meal charts, and 1-on-1 coaching.',
+  description:
+    'Certified Herbalife Wellness Coach offering customized weight management programs, nutrition meal charts, and 1-on-1 coaching.',
   priceRange: '₹₹',
   telephone: '+91-9999999999',
   address: {
@@ -123,10 +125,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
         />
       </head>
-      <body>
-        <AnalyticsInit />
-        {children}
-      </body>
+      <body>{children}</body>
     </html>
   );
 }

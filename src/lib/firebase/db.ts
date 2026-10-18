@@ -1,15 +1,5 @@
-// Firestore database helper functions
-// All data written here is viewable in Firebase Console → Firestore
-
-import {
-  collection,
-  addDoc,
-  serverTimestamp,
-  type DocumentReference,
-} from 'firebase/firestore';
-import { db } from './client';
-
-// ── Types ────────────────────────────────────────────────────────────────────
+// Lead and Booking helper functions (Self-contained / Firebase removed)
+// Data submissions can be handled via API routes, WhatsApp or external services.
 
 export interface BookingData {
   name: string;
@@ -28,21 +18,31 @@ export interface ContactData {
   message: string;
 }
 
-// ── Collections ───────────────────────────────────────────────────────────────
-
-/** Save a new consultation booking to Firestore → /bookings */
-export async function saveBooking(data: BookingData): Promise<DocumentReference> {
-  return addDoc(collection(db, 'bookings'), {
-    ...data,
-    status: 'pending',
-    createdAt: serverTimestamp(),
-  });
+/** Save a new consultation booking */
+export async function saveBooking(data: BookingData): Promise<{ id: string }> {
+  // Store in localStorage if in browser environment for demo/offline retention
+  if (typeof window !== 'undefined') {
+    try {
+      const existing = JSON.parse(localStorage.getItem('hs_bookings') || '[]');
+      existing.push({ ...data, createdAt: new Date().toISOString() });
+      localStorage.setItem('hs_bookings', JSON.stringify(existing));
+    } catch {
+      // ignore
+    }
+  }
+  return { id: `booking_${Date.now()}` };
 }
 
-/** Save a contact form submission to Firestore → /contacts */
-export async function saveContact(data: ContactData): Promise<DocumentReference> {
-  return addDoc(collection(db, 'contacts'), {
-    ...data,
-    createdAt: serverTimestamp(),
-  });
+/** Save a contact form submission */
+export async function saveContact(data: ContactData): Promise<{ id: string }> {
+  if (typeof window !== 'undefined') {
+    try {
+      const existing = JSON.parse(localStorage.getItem('hs_contacts') || '[]');
+      existing.push({ ...data, createdAt: new Date().toISOString() });
+      localStorage.setItem('hs_contacts', JSON.stringify(existing));
+    } catch {
+      // ignore
+    }
+  }
+  return { id: `contact_${Date.now()}` };
 }
